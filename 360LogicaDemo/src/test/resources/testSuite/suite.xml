@@ -1,0 +1,7 @@
+<suite name="test">
+	<test name="All Scripts">
+		<classes>
+			<class name= "homePage.VerifyHomePage"/>
+		</classes>
+	</test>
+</suite>
