@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -18,6 +20,7 @@ public class VerifyHomePage {
 	String subHeader;
 	WebDriver driver;
 	boolean productTable;
+	WebDriverWait wait;
 
 	@BeforeMethod
 	public void beforeMethod() {
@@ -32,27 +35,29 @@ public class VerifyHomePage {
 
 		// launch the application
 		driver.get("http://192.168.9.21:30006/");
+		
+		wait= new WebDriverWait(driver,30);
 
 		// verify page header
-		pageHeader = driver.findElement(By.className("page-header")).getText();
-		Assert.assertEquals("Welcome to the Microservices My Demo a Day",
-				pageHeader, "page header doesn't match");
+		WebElement pageHeader= driver.findElement(By.className("page-header"));
+		wait.until(ExpectedConditions.visibilityOf(pageHeader));
+		Assert.assertEquals("Welcome to the Acume Devops Capabilty!",
+				pageHeader.getText(), "Page Header doesn't match");
 
 		// verify page sub header
-		subHeader = driver.findElement(By.className("sub-header")).getText();
-		Assert.assertEquals("Please see the product!", subHeader,
-				"page sub header doesn't match");
+		WebElement subHeader= driver.findElement(By.className("sub-header"));
+		wait.until(ExpectedConditions.visibilityOf(pageHeader));
+		Assert.assertEquals("Please see a product!", subHeader.getText(),
+				"Page Sub Header doesn't match");
 
 		// verify product table
-		try {
-			driver.findElement(By.id("product-table")).isDisplayed();
-			productTable = true;
-		} catch (Exception ex) {
-			productTable = false;
+		List<WebElement> productTable= driver.findElements(By.xpath("//table[@id='product-table']/tbody/tr"));
+		wait.until(ExpectedConditions.visibilityOfAllElements(productTable));
+		boolean status = false;
+		if(productTable.size()>0){
+			status= true;
 		}
-
-		Assert.assertTrue(productTable,
-				"Product table is not available on the page");
+		Assert.assertTrue(status, "Data is not present in the table");
 	}
 
 	@AfterMethod
