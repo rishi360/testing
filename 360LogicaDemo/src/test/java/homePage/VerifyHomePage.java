@@ -41,7 +41,7 @@ public class VerifyHomePage {
 		// verify page header
 		WebElement pageHeader= driver.findElement(By.className("page-header"));
 		wait.until(ExpectedConditions.visibilityOf(pageHeader));
-		Assert.assertEquals("Welcome to the Acume Devops Capabilty!",
+		Assert.assertEquals("Welcome to the Acuma Devops Capabilty!",
 				pageHeader.getText(), "Page Header doesn't match");
 
 		// verify page sub header
