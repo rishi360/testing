@@ -34,14 +34,14 @@ public class VerifyHomePage {
 	public void testVerifyHomePage() {
 
 		// launch the application
-		driver.get("http://192.168.9.21:30006/");
+		driver.get("http://192.168.9.21:31198/");
 		
 		wait= new WebDriverWait(driver,30);
 
 		// verify page header
 		WebElement pageHeader= driver.findElement(By.className("page-header"));
 		wait.until(ExpectedConditions.visibilityOf(pageHeader));
-		Assert.assertEquals("Welcome to the Acuma Devops Capabilty!",
+		Assert.assertEquals("Welcome to the Acuma Devops Capability!",
 				pageHeader.getText(), "Page Header doesn't match");
 
 		// verify page sub header
