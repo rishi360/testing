@@ -34,7 +34,7 @@ public class VerifyHomePage {
 	public void testVerifyHomePage() {
 
 		// launch the application
-		driver.get("http://192.168.9.21:31198/");
+		driver.get("http://stage.360logica.gq:30000/");
 		
 		wait= new WebDriverWait(driver,30);
 
