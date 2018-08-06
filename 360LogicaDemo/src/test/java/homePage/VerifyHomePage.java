@@ -32,10 +32,15 @@ public class VerifyHomePage {
 
 	@Test
 	public void testVerifyHomePage() {
-
-		// launch the application
-		driver.get("http://192.168.9.21:31198/");
-		
+	// launch the application
+	int BUILD_NUMBER=Integer.parseInt(System.getProperty("BUILD_NUMBER"));
+	String url="";
+	if(BUILD_NUMBER%2==0){
+	 url="http://stage.360logica.gq:30000/";
+	}else{
+	 url="http://stage.360logica.gq:30001/";
+	}
+		driver.get(url);
 		wait= new WebDriverWait(driver,30);
 
 		// verify page header
