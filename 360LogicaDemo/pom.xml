@@ -58,6 +58,12 @@
               <goal>test</goal>
             </goals>
             <configuration>
+		 <systemProperties>
+            <systemProperty>
+              <name>BUILD_NUMBER</name>
+              <value>${BUILD_NUMBER}</value>
+            </systemProperty>
+         </systemProperties>
               <testFailureIgnore>false</testFailureIgnore>
               <suiteXmlFiles>
                 <file>src/test/resources/testSuite/suite.xml</file>
