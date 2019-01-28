@@ -34,7 +34,7 @@ public class VerifyHomePage {
 	public void testVerifyHomePage() {
 
 		// launch the application
-		driver.get("http://192.168.5.173:31831/");
+		driver.get("http://192.168.5.173:31850/");
 		
 		wait= new WebDriverWait(driver,30);
 
