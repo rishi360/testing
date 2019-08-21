@@ -46,7 +46,7 @@ public class VerifyHomePage {
 		// verify page header
 		WebElement pageHeader= driver.findElement(By.className("page-header"));
 		wait.until(ExpectedConditions.visibilityOf(pageHeader));
-		Assert.assertEquals("Welcome to 360Logica Devops Demo!",
+		Assert.assertEquals("Welcome to Devops Demo!",
 				pageHeader.getText(), "Page Header doesn't match");
 
 		// verify page sub header
